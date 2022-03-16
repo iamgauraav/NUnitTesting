@@ -1,26 +1,30 @@
 ﻿using System;
 
 namespace NUnitTesting
-{
+{/// <summary>
+/// UC-4 Monthly Payment
+/// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            //for calling  method created obj of the class 
-            TemperatureConvertion temp = new TemperatureConvertion();
+            //Taking Principal from user
+            Console.WriteLine("Enter a Principal");
+            double principal = Convert.ToDouble(Console.ReadLine());
+            //Taking Interest rate from user
+            Console.WriteLine("Enter Interest Rate");
+            double rate = Convert.ToDouble(Console.ReadLine());
+            //rate formula
+            rate = (rate / 100) / 12;
+            //Taking year from user
+            Console.WriteLine("Enter a Year");
+            int year = Convert.ToInt32(Console.ReadLine());
+            year = year * 12;
 
-            //taking celsius value from user
-            Console.WriteLine("Please provide celsius temp:");
-            string val1 = Console.ReadLine();
-            //CelsiusTOFahrenheit using double so double Fahrenheit
-            double Fahrenheit = temp.CelsiusTOFahrenheit(val1);
-            //interpulated string to print values
-            Console.WriteLine($"The value of {val1} celsius is {Fahrenheit} Fahrenheit ");
+            //Calculating payment 
+            double pay = (principal * rate) / (1 - Math.Pow(1 + rate, -year));
 
-            Console.WriteLine("Please provide Fahrenheit temp:");
-            string val2 = Console.ReadLine();
-            double celsius = temp.FahrenheitToCelsius(val2);
-            Console.WriteLine($"The value of {val2} Fahrenheit is {celsius} celsius");
+            Console.WriteLine("Payment " + pay);
             Console.ReadLine();
         }
         

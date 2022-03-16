@@ -2,32 +2,35 @@
 
 namespace NUnitTesting
 {/// <summary>
-/// UC-4 Monthly Payment
+/// UC-5 Calculating square root of  a number using newtons method
 /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            //Taking Principal from user
-            Console.WriteLine("Enter a Principal");
-            double principal = Convert.ToDouble(Console.ReadLine());
-            //Taking Interest rate from user
-            Console.WriteLine("Enter Interest Rate");
-            double rate = Convert.ToDouble(Console.ReadLine());
-            //rate formula
-            rate = (rate / 100) / 12;
-            //Taking year from user
-            Console.WriteLine("Enter a Year");
-            int year = Convert.ToInt32(Console.ReadLine());
-            year = year * 12;
+            //N is the numbeer for which you are calculating squareroot
+            Console.WriteLine("Enter a number");
+            double N = Convert.ToDouble(Console.ReadLine());
+            //set L is the tolerence level
+            double L = 0.00001;
+            double t = N;
+            double sqRoot;
+            int count = 0;
 
-            //Calculating payment 
-            double pay = (principal * rate) / (1 - Math.Pow(1 + rate, -year));
+            while (true)
+            {
+                count++;
+                sqRoot = 0.5 * (t + (N / t));
 
-            Console.WriteLine("Payment " + pay);
+                if (Math.Abs(sqRoot - t) < L)
+                {
+                    break;
+                }
+                t = sqRoot;
+            }
+            Console.WriteLine("Root Value is : " + Math.Round(sqRoot, 2));
             Console.ReadLine();
         }
-        
     }
 }
 
